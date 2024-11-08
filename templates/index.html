@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Car Price Prediction</title>
+    <style>
+        body {
+            background-image: url('/static/car.jpg'); /* Ensure the path is correct */
+            background-size: cover;
+            background-position: center;
+            color: white;
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 20px;
+            border-radius: 8px;
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        input, select {
+            margin: 10px 0;
+            padding: 10px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+            width: calc(100% - 22px);
+        }
+        h1 {
+            margin-bottom: 20px;
+        }
+        .result {
+            margin-top: 20px;
+            font-size: 1.2em;
+        }
+        .back-link {
+            color: #007bff;
+            text-decoration: none;
+            font-size: 1.2em;
+        }
+        .back-link:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="/" class="back-link"><h1>Car Price Prediction</h1></a>
+        <form id="predictionForm" method="POST" action="/predict">
+            <label for="year">Year:</label>
+            <input type="number" id="year" name="year" required><br>
+
+            <label for="km_driven">Kilometers Driven:</label>
+            <input type="number" id="km_driven" name="km_driven" required><br>
+
+            <label for="fuel_type">Fuel Type:</label>
+            <select id="fuel_type" name="fuel_type" required>
+                <option value="Petrol">Petrol</option>
+                <option value="Diesel">Diesel</option>
+                <option value="CNG">CNG</option>
+                <option value="LPG">LPG</option>
+                <option value="Electric">Electric</option>
+            </select><br>
+
+            <label for="seller_type">Seller Type:</label>
+            <select id="seller_type" name="seller_type" required>
+                <option value="Individual">Individual</option>
+                <option value="Dealer">Dealer</option>
+            </select><br>
+
+            <label for="transmission">Transmission:</label>
+            <select id="transmission" name="transmission" required>
+                <option value="Manual">Manual</option>
+                <option value="Automatic">Automatic</option>
+            </select><br>
+
+            <label for="owner">Owner:</label>
+            <select id="owner" name="owner" required>
+                <option value="First Owner">First Owner</option>
+                <option value="Second Owner">Second Owner</option>
+                <option value="Third Owner">Third Owner</option>
+                <option value="Fourth Owner">Fourth Owner</option>
+                <option value="Fifth Owner">Fifth Owner</option>
+            </select><br>
+
+            <input type="submit" value="Predict Price">
+        </form>
+        {% if prediction_text %}
+            <div class="result" id="result">{{ prediction_text }}</div>
+        {% endif %}
+    </div>
+</body>
+</html>

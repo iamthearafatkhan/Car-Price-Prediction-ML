@@ -1,0 +1,5 @@
+This Car price prediction using Maching Learning project.
+It's has car data and it's a basic project. Here i use flask and used AI regression model.
+Here, i delete model because oversize for uploading in Github. For model you have to run train_and_save_model.py file than run app.py for project.
+
+Good Luck!
